@@ -1,0 +1,325 @@
+.what {
+    width: 100%;
+    padding: 100px 0;
+
+    background: #05070b;
+}
+
+.block {
+    width: 90%;
+    max-width: 1176px;
+    margin: 0 auto;
+}
+
+/* =========================
+   HEADING
+========================= */
+
+.heading {
+    margin-bottom: 68px;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    width: fit-content;
+
+    margin-bottom: 25px;
+
+    font-family: monospace;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: #8993a8;
+}
+
+.label::before {
+    content: '';
+
+    width: 15px;
+    height: 1px;
+
+    background: #758cff;
+}
+
+.heading h2 {
+    margin: 0;
+
+    font-size: clamp(38px, 4vw, 50px);
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -2px;
+
+    color: #f1f3f8;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    overflow: hidden;
+
+    border: 1px solid #2b3039;
+    border-radius: 21px;
+
+    background: #0b0e14;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+    position: relative;
+
+    min-height: 245px;
+
+    padding: 42px 44px;
+
+    background: #0c0f15;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.card:nth-child(odd) {
+    border-right: 1px solid #1d222b;
+}
+
+.card:nth-child(-n + 2) {
+    border-bottom: 1px solid #1d222b;
+}
+
+.card:hover {
+    background: #10141c;
+}
+
+/* =========================
+   CARD TOP
+========================= */
+
+.cardTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 27px;
+}
+
+.number {
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 1;
+
+    color: #929caf;
+
+    transition: color 0.3s ease;
+}
+
+.arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    border: 1px solid #252b35;
+    border-radius: 50%;
+
+    font-size: 14px;
+
+    color: #707a8d;
+
+    opacity: 0;
+    transform: translate(-5px, 5px);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.card:hover .arrow {
+    opacity: 1;
+    transform: translate(0, 0);
+
+    color: #dce2ef;
+    border-color: #424a59;
+}
+
+.card:hover .number {
+    color: #b9c1d2;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.card h3 {
+    margin: 0 0 12px;
+
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+
+    color: #eef1f7;
+
+    transition: transform 0.3s ease;
+}
+
+.card:hover h3 {
+    transform: translateX(3px);
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.card p {
+    max-width: 400px;
+
+    margin: 0 0 24px;
+
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: 400;
+
+    color: #8d97aa;
+}
+
+/* =========================
+   TECHNOLOGIES
+========================= */
+
+.technologies {
+    display: block;
+
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 0.4px;
+
+    color: #667186;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 800px) {
+    .what {
+        padding: 80px 0;
+    }
+
+    .heading {
+        margin-bottom: 50px;
+    }
+
+    .card {
+        min-height: 230px;
+        padding: 36px 32px;
+    }
+
+    .card h3 {
+        font-size: 18px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+
+    .arrow {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+    .what {
+        padding: 70px 0;
+    }
+
+    .block {
+        width: 88%;
+    }
+
+    .heading {
+        margin-bottom: 40px;
+    }
+
+    .label {
+        margin-bottom: 20px;
+        font-size: 11px;
+    }
+
+    .heading h2 {
+        font-size: 36px;
+        letter-spacing: -1.5px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        border-radius: 16px;
+    }
+
+    .card {
+        min-height: auto;
+        padding: 30px 26px;
+    }
+
+    .card:nth-child(odd) {
+        border-right: none;
+    }
+
+    .card:nth-child(-n + 2) {
+        border-bottom: none;
+    }
+
+    .card:not(:last-child) {
+        border-bottom: 1px solid #1d222b;
+    }
+
+    .cardTop {
+        margin-bottom: 22px;
+    }
+
+    .number {
+        font-size: 12px;
+    }
+
+    .card h3 {
+        font-size: 18px;
+    }
+
+    .card p {
+        margin-bottom: 20px;
+        font-size: 13px;
+    }
+
+    .technologies {
+        font-size: 9px;
+    }
+
+    .arrow {
+        width: 26px;
+        height: 26px;
+
+        opacity: 1;
+        transform: none;
+    }
+}

@@ -1,0 +1,547 @@
+.Navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background: linear-gradient(90deg,
+            #06070c 0%,
+            #06070c 65%,
+            #0c0a18 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+    transform: translateY(0);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+.hidden {
+    transform: translateY(-100%);
+}
+
+.nav {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1176px;
+    height: 78px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    width: 100px;
+    text-decoration: none;
+    animation: logoIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    transition:
+        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.5s ease;
+}
+
+.logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.logo:hover {
+    transform: scale(1.025);
+    filter:
+        drop-shadow(0 0 7px rgba(124, 77, 255, 0.4)) drop-shadow(0 0 16px rgba(59, 130, 246, 0.18));
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 407px;
+    height: 24px;
+}
+
+.link {
+    position: relative;
+    color: #9297a8;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    transition:
+        color 0.4s ease,
+        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link:hover {
+    color: #f1f2f6;
+    transform: translateY(-2px);
+}
+
+.links .link::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #a855f7, #3b82f6);
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+    box-shadow: 0 0 10px rgba(124, 77, 255, 0.7);
+    transition:
+        transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.35s ease;
+}
+
+.links .link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    width: 0;
+    height: 1px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #a855f7, #3b82f6);
+    transform: translateX(-50%);
+    opacity: 0;
+    box-shadow: 0 0 8px rgba(124, 77, 255, 0.45);
+    transition:
+        width 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.4s ease;
+}
+
+.links .link:hover::before {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+}
+
+.links .link:hover::after {
+    width: 28px;
+    opacity: 0.9;
+}
+
+.btns {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #414552;
+    font-size: 13px;
+    animation: fadeIn 0.7s ease 0.3s both;
+}
+
+.btn {
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #777d8d;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    transition:
+        color 0.4s ease,
+        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn:hover {
+    color: #f1f2f6;
+    transform: translateY(-1px);
+}
+
+.btn[aria-pressed="true"] {
+    color: #f1f2f6;
+    font-weight: 600;
+}
+
+.burger {
+    display: none;
+    position: relative;
+    z-index: 102;
+
+    width: 44px;
+    height: 44px;
+
+    padding: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.02);
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.4s ease,
+        background 0.4s ease,
+        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.burger:hover {
+    border-color: rgba(139, 92, 246, 0.5);
+    background: rgba(139, 92, 246, 0.06);
+    transform: scale(1.04);
+}
+
+.burger span {
+    position: absolute;
+    left: 50%;
+
+    width: 17px;
+    height: 1px;
+
+    background: #eef0f6;
+
+    transform: translateX(-50%);
+
+    transition:
+        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        top 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.burger span:first-child {
+    top: 17px;
+}
+
+.burger span:last-child {
+    top: 25px;
+}
+
+.burger.active span:first-child {
+    top: 21px;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.burger.active span:last-child {
+    top: 21px;
+    transform: translateX(-50%) rotate(-45deg);
+}
+
+.mobileActions {
+    display: none;
+}
+
+.overlay {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .nav {
+        padding: 0 24px;
+    }
+
+    .links {
+        width: 350px;
+    }
+}
+
+@media (max-width: 760px) {
+    .nav {
+        position: relative;
+        height: 72px;
+        padding: 0 20px;
+    }
+
+    .nav>.btns,
+    .nav>.talkButton {
+        display: none;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .links {
+        position: fixed;
+        z-index: 101;
+
+        top: 0;
+        right: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+
+        gap: 28px;
+
+        width: min(82vw, 360px);
+        height: 100vh;
+
+        padding: 100px 40px 40px;
+
+        box-sizing: border-box;
+
+        background:
+            linear-gradient(145deg,
+                #090a12 0%,
+                #0b0916 55%,
+                #100b20 100%);
+
+        border-left: 1px solid rgba(255, 255, 255, 0.06);
+
+        transform: translateX(100%);
+
+        transition:
+            transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+
+        box-shadow:
+            -20px 0 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .links.open {
+        transform: translateX(0);
+    }
+
+    .links .link {
+        font-size: 22px;
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    .links.open .link {
+        animation: mobileLinkIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .links.open .link:nth-child(1) {
+        animation-delay: 0.08s;
+    }
+
+    .links.open .link:nth-child(2) {
+        animation-delay: 0.13s;
+    }
+
+    .links.open .link:nth-child(3) {
+        animation-delay: 0.18s;
+    }
+
+    .links.open .link:nth-child(4) {
+        animation-delay: 0.23s;
+    }
+
+    .links.open .link:nth-child(5) {
+        animation-delay: 0.28s;
+    }
+
+    .links .link::after,
+    .links .link::before {
+        display: none;
+    }
+
+    .mobileActions {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+
+        margin-top: 20px;
+
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    .links.open .mobileActions {
+        animation: mobileActionsIn 0.6s ease 0.35s forwards;
+    }
+
+    .mobileActions .btns {
+        animation: none;
+    }
+
+    .mobileActions .talkButton {
+        display: flex;
+        min-width: 140px;
+    }
+
+    .overlay {
+        display: block;
+        position: fixed;
+        z-index: 100;
+
+        inset: 0;
+
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(4px);
+
+        animation: overlayIn 0.5s ease forwards;
+    }
+}
+
+@keyframes mobileLinkIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes mobileActionsIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes overlayIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 400px) {
+    .logo {
+        width: 90px;
+    }
+
+    .nav {
+        padding: 0 16px;
+    }
+
+    .links {
+        width: 88vw;
+        padding-left: 30px;
+    }
+}
+
+.talkButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 122px;
+    height: 42px;
+    padding: 0 18px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    color: #e9ebf2;
+    background: rgba(255, 255, 255, 0.01);
+    font-size: 14px;
+    text-decoration: none;
+    animation: talkIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+    transition:
+        color 0.45s ease,
+        border-color 0.5s ease,
+        background 0.5s ease,
+        box-shadow 0.6s ease,
+        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.talkButton span {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.talkButton:hover {
+    color: #ffffff;
+    border-color: rgba(124, 77, 255, 0.55);
+    background: linear-gradient(135deg,
+            rgba(124, 77, 255, 0.1),
+            rgba(59, 130, 246, 0.06));
+    box-shadow:
+        0 0 25px rgba(124, 77, 255, 0.12),
+        inset 0 0 20px rgba(124, 77, 255, 0.035);
+    transform: translateY(-2px);
+}
+
+.talkButton:hover span {
+    transform: translateX(4px);
+}
+
+.links .link {
+    opacity: 0;
+    animation: linkIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.links .link:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.links .link:nth-child(2) {
+    animation-delay: 0.14s;
+}
+
+.links .link:nth-child(3) {
+    animation-delay: 0.18s;
+}
+
+.links .link:nth-child(4) {
+    animation-delay: 0.22s;
+}
+
+.links .link:nth-child(5) {
+    animation-delay: 0.26s;
+}
+
+@keyframes logoIn {
+    from {
+        opacity: 0;
+        transform: translateX(-18px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes linkIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes talkIn {
+    from {
+        opacity: 0;
+        transform: translateX(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .nav,
+    .logo,
+    .links .link,
+    .btns,
+    .talkButton {
+        animation: none;
+        opacity: 1;
+    }
+
+    * {
+        transition: none !important;
+    }
+}

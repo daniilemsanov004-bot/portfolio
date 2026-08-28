@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+    font-family: sans-serif;
+    scroll-behavior: smooth;
+    overflow-wrap: break-word;
+}
+
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+img,
+video,
+picture,
+canvas,
+svg {
+    max-width: 100%;
+    display: block;
+}
+
+body {
+    background: var(--black);
+}
+
