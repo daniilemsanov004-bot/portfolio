@@ -7,7 +7,7 @@ const projectMeta = [
     {
         key: 'UrbanKey',
         tags: ['React', 'Supabase', 'AI', 'Telegram Bot'],
-        image: '/images/urbankey.png',
+        image: '/images/Urbankey.png',
         link: 'https://urbankeyy.vercel.app/',
     },
     {
