@@ -62,14 +62,24 @@ export default async function handler(req, res) {
         return res.status(400).json({ ok: false, error: 'Field too long' })
     }
 
+    const submittedAt = new Date().toLocaleString('ru-RU', {
+        timeZone: 'Asia/Tashkent',
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+    })
+
     const text = [
-        '📩 <b>New project request</b>',
+        '📬 <b>Новая заявка с сайта</b>',
         '',
-        `<b>Name:</b> ${escapeHtml(name)}`,
-        `<b>Contact:</b> ${escapeHtml(contact)}`,
+        `👤 <b>Имя:</b> ${escapeHtml(name)}`,
+        `📞 <b>Контакт:</b> ${escapeHtml(contact)}`,
+        `🕒 <b>Время:</b> ${submittedAt}`,
         '',
-        `<b>Message:</b>`,
-        escapeHtml(message),
+        '💬 <b>Сообщение:</b>',
+        `<blockquote>${escapeHtml(message)}</blockquote>`,
     ].join('\n')
 
     try {
