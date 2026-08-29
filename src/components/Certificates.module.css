@@ -1,0 +1,432 @@
+.certificates {
+    width: 100%;
+    padding: 100px 0;
+
+    background: #080b11;
+}
+
+.block {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* =========================
+   HEADING
+========================= */
+
+.heading {
+    max-width: 560px;
+    margin-bottom: 60px;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    width: fit-content;
+    margin-bottom: 20px;
+
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: #8993a8;
+}
+
+.label svg {
+    color: #758cff;
+}
+
+.heading h2 {
+    margin: 0 0 16px;
+
+    font-size: clamp(32px, 4vw, 42px);
+    line-height: 1.1;
+    font-weight: 700;
+
+    color: #f1f4fb;
+}
+
+.heading p {
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 1.7;
+
+    color: #8f9bb3;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    border: 1px solid #252c39;
+    border-radius: 16px;
+
+    background: #0d1119;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+
+    border-color: #3a414d;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================
+   PREVIEW
+========================= */
+
+.preview {
+    position: relative;
+
+    width: 100%;
+    height: 300px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 22px;
+
+    cursor: pointer;
+    overflow: hidden;
+
+    border: 0;
+    border-bottom: 1px solid #1c212b;
+    border-radius: 0;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(50, 43, 83, 0.18),
+            transparent 65%),
+        #0b0f17;
+}
+
+.preview img {
+    max-width: 100%;
+    max-height: 100%;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 6px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
+}
+
+.card:hover .preview img {
+    transform: scale(1.03);
+    filter: brightness(0.75);
+}
+
+.zoomHint {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+
+    color: #eef1f7;
+
+    opacity: 0;
+
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .zoomHint {
+    opacity: 1;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+    display: flex;
+    flex-direction: column;
+
+    padding: 26px 26px 28px;
+}
+
+.content h3 {
+    margin: 0 0 6px;
+
+    font-size: 18px;
+    line-height: 1.3;
+    font-weight: 600;
+
+    color: #eef2f8;
+}
+
+.issuer {
+    margin: 0 0 14px;
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    color: #8f9bb3;
+}
+
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-bottom: 14px;
+}
+
+.meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 6px 11px;
+
+    border: 1px solid #293241;
+    border-radius: 20px;
+
+    font-family: monospace;
+    font-size: 10px;
+
+    color: #a1acbe;
+
+    background: #0b0f17;
+}
+
+.meta svg {
+    color: #39bdf8;
+}
+
+.detail {
+    margin: 0;
+
+    font-size: 13px;
+    line-height: 1.7;
+
+    color: #6d7789;
+}
+
+/* =========================
+   LIGHTBOX OVERLAY
+========================= */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background: rgba(5, 7, 11, 0.86);
+    backdrop-filter: blur(6px);
+}
+
+.modal {
+    position: relative;
+
+    width: 100%;
+    max-width: 640px;
+    max-height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    border: 1px solid #292e38;
+    border-radius: 18px;
+
+    background: #0c0f15;
+
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+}
+
+.modalImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 28px;
+
+    background: #05070b;
+}
+
+.modalImage img {
+    max-width: 100%;
+    max-height: 68vh;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 8px;
+}
+
+.modalInfo {
+    padding: 20px 28px 26px;
+
+    border-top: 1px solid #1c212b;
+}
+
+.modalInfo h3 {
+    margin: 0 0 6px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    color: #eef2f8;
+}
+
+.modalInfo p {
+    margin: 0;
+
+    font-size: 13px;
+
+    color: #8f9bb3;
+}
+
+.dot {
+    margin: 0 8px;
+
+    color: #3c424d;
+}
+
+.close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    cursor: pointer;
+
+    border: 1px solid #292e38;
+    border-radius: 50%;
+
+    color: #d5dae5;
+    background: rgba(12, 15, 21, 0.8);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.close:hover {
+    transform: rotate(90deg);
+
+    border-color: #3a414d;
+    color: #ffffff;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 800px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .preview {
+        height: 280px;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+    .certificates {
+        padding: 70px 0;
+    }
+
+    .block {
+        width: 88%;
+    }
+
+    .heading {
+        margin-bottom: 40px;
+    }
+
+    .heading h2 {
+        font-size: 30px;
+    }
+
+    .heading p {
+        font-size: 13px;
+    }
+
+    .grid {
+        gap: 18px;
+    }
+
+    .preview {
+        height: 230px;
+        padding: 16px;
+    }
+
+    .content {
+        padding: 22px 20px 24px;
+    }
+
+    .content h3 {
+        font-size: 16px;
+    }
+
+    .overlay {
+        padding: 16px;
+    }
+
+    .modalImage {
+        padding: 18px;
+    }
+
+    .modalInfo {
+        padding: 16px 20px 20px;
+    }
+}

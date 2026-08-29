@@ -112,6 +112,27 @@ export const translations = {
                 status: 'Available',
             },
         },
+        certificates: {
+            label: 'Certificates',
+            title: 'Certifications',
+            description:
+                'Credentials that back up the skills I bring to every project.',
+            viewFull: 'View full size',
+            items: {
+                itAcademy: {
+                    title: 'Front-end Development',
+                    issuer: 'IT-Academy, powered by IT Park',
+                    date: 'Grade A',
+                    meta: 'Completed the front-end development course with a top grade.',
+                },
+                cefr: {
+                    title: 'English Proficiency — CEFR B1',
+                    issuer: 'Agency for Assessment of Knowledge and Competences',
+                    date: 'Issued Jun 2026 · Valid until Jun 2028',
+                    meta: 'Certified B1 level across listening, reading, writing and speaking.',
+                },
+            },
+        },
         process: {
             label: 'Process',
             title: 'How I work',
@@ -163,10 +184,6 @@ export const translations = {
             labelMessage: 'Tell me about the project',
             placeholderMessage: 'I need a website for...',
             submit: 'Send request',
-            sending: 'Sending…',
-            successTitle: 'Message sent!',
-            successMessage: "Thanks for reaching out — I'll get back to you soon.",
-            errorMessage: 'Something went wrong. Please try again or message me directly on Telegram.',
             builtWith: 'Designed & built with React',
         },
         footer: {
@@ -301,6 +318,27 @@ export const translations = {
                 status: 'Свободен',
             },
         },
+        certificates: {
+            label: 'Сертификаты',
+            title: 'Сертификаты',
+            description:
+                'Подтверждённые навыки, на которые я опираюсь в каждом проекте.',
+            viewFull: 'Смотреть полностью',
+            items: {
+                itAcademy: {
+                    title: 'Front-end Development',
+                    issuer: 'IT-Academy, powered by IT Park',
+                    date: 'Оценка A',
+                    meta: 'Прошёл курс по front-end разработке с высшей оценкой.',
+                },
+                cefr: {
+                    title: 'Английский язык — CEFR B1',
+                    issuer: 'Агентство по оценке знаний и компетенций',
+                    date: 'Выдан в июне 2026 · Действителен до июня 2028',
+                    meta: 'Подтверждён уровень B1: аудирование, чтение, письмо и говорение.',
+                },
+            },
+        },
         process: {
             label: 'Процесс',
             title: 'Как я работаю',
@@ -352,10 +390,6 @@ export const translations = {
             labelMessage: 'Расскажите о проекте',
             placeholderMessage: 'Мне нужен сайт для...',
             submit: 'Отправить заявку',
-            sending: 'Отправка…',
-            successTitle: 'Сообщение отправлено!',
-            successMessage: 'Спасибо за обращение — я скоро свяжусь с вами.',
-            errorMessage: 'Что-то пошло не так. Попробуйте ещё раз или напишите мне напрямую в Telegram.',
             builtWith: 'Спроектировано и создано на React',
         },
         footer: {

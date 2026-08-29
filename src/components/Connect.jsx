@@ -29,9 +29,7 @@ const Connect = () => {
         name: '',
         contact: '',
         message: '',
-        website: '', // honeypot — real users never see or fill this
     })
-    const [status, setStatus] = useState('idle') // idle | sending | success | error
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -42,28 +40,10 @@ const Connect = () => {
         }))
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
 
-        if (status === 'sending') return
-
-        setStatus('sending')
-
-        try {
-            const res = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(form),
-            })
-
-            if (!res.ok) throw new Error('Request failed')
-
-            setStatus('success')
-            setForm({ name: '', contact: '', message: '', website: '' })
-        } catch (err) {
-            console.error(err)
-            setStatus('error')
-        }
+        console.log(form)
     }
 
     return (
@@ -168,18 +148,6 @@ const Connect = () => {
                         className={s.form}
                         onSubmit={handleSubmit}
                     >
-                        {/* Honeypot field — hidden from real visitors via CSS,
-                            bots that auto-fill every input will trip it. */}
-                        <input
-                            type="text"
-                            name="website"
-                            value={form.website}
-                            onChange={handleChange}
-                            tabIndex={-1}
-                            autoComplete="off"
-                            aria-hidden="true"
-                            className={s.honeypot}
-                        />
                         <div className={s.inputGroup}>
                             <label htmlFor="name">
                                 {t.connect.labelName}
@@ -249,28 +217,13 @@ const Connect = () => {
                         <button
                             type="submit"
                             className={s.submit}
-                            disabled={status === 'sending'}
                         >
-                            <span>
-                                {status === 'sending' ? t.connect.sending : t.connect.submit}
-                            </span>
+                            <span>{t.connect.submit}</span>
 
                             <span className={s.submitArrow}>
                                 ↗
                             </span>
                         </button>
-
-                        {status === 'success' && (
-                            <p className={s.formStatusSuccess} role="status">
-                                {t.connect.successTitle} {t.connect.successMessage}
-                            </p>
-                        )}
-
-                        {status === 'error' && (
-                            <p className={s.formStatusError} role="alert">
-                                {t.connect.errorMessage}
-                            </p>
-                        )}
                     </form>
                 </motion.div>
 

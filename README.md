@@ -11,34 +11,6 @@ Currently, two official plugins are available:
 
 The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Contact form → Telegram bot
+## Expanding the Oxlint configuration
 
-The contact form in the "Get in touch" section submits to a serverless
-function at `api/contact.js`, which forwards the message to a Telegram chat
-via the Bot API. The bot token never touches the browser.
-
-### Setup
-
-1. Create a bot with [@BotFather](https://t.me/BotFather) and copy the token
-   it gives you.
-2. Send your bot any message, then open
-   `https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates` in your browser and
-   read the `"chat":{"id": ...}` value — that's your `TELEGRAM_CHAT_ID`.
-3. Copy `.env.example` to `.env` and fill in both values:
-   ```
-   TELEGRAM_BOT_TOKEN=123456:ABC-your-token
-   TELEGRAM_CHAT_ID=123456789
-   ```
-4. Run locally with the Vercel CLI so the `/api` function works in dev too:
-   ```
-   npm i -g vercel
-   vercel dev
-   ```
-   (Plain `npm run dev` only serves the frontend — the `/api/contact`
-   endpoint needs Vercel's dev server or an equivalent to run.)
-5. When deploying on Vercel, add the same two variables under
-   **Project → Settings → Environment Variables** instead of committing
-   `.env` (it's already git-ignored).
-
-The form also has a hidden honeypot field to filter out basic spam bots.
-
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.

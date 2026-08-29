@@ -24,14 +24,7 @@ svg {
     display: block;
 }
 
-html {
-    overflow-x: hidden;
-    width: 100%;
-}
-
 body {
     background: var(--black);
-    overflow-x: hidden;
-    width: 100%;
 }
 
