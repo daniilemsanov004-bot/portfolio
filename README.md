@@ -1,103 +1,401 @@
-# Портфолио
+# Portfolio — Personal Frontend Developer Website
 
-Личный сайт-портфолио на React — одностраничное приложение (SPA) с анимациями, переключением языка (RU/EN) и формой обратной связи, которая пересылает заявки в Telegram.
+A personal portfolio website built with **React + Vite**.
 
-Сайт демонстрирует проекты, стек технологий, услуги, информацию об авторе, сертификаты и контакты. Всё содержимое расположено на одной странице `Home`, разбитой на секции-компоненты; переходы по «старым»/произвольным путям автоматически редиректят на главную.
+The project is a single-page application (SPA) with animations, RU/EN language switching, a project showcase, technology stack, services, certificates, work process and a contact form that sends messages directly to Telegram.
 
-## Возможности
+The website is designed to present the author's frontend development skills, projects and experience in a clean modern interface.
 
-- Одностраничная структура с секциями: Hero, стек технологий, проекты (Work), услуги (What), обо мне (Me), сертификаты, процесс работы (Process), форма связи (Connect), футер.
-- Переключение языка интерфейса (русский / английский) через контекст `LanguageContext` и словарь переводов.
-- Плавные анимации появления элементов при скролле на `framer-motion`.
-- Адаптивная вёрстка на CSS Modules (отдельный `.module.css` под каждый компонент).
-- Форма обратной связи с honeypot-полем от спам-ботов и серверной валидацией.
-- Серверная функция `api/contact.js`, которая пересылает заявки из формы в Telegram-чат через Bot API.
-- Роутинг через `react-router-dom` с fallback-редиректом на главную страницу.
+## Features
 
-## Стек технологий
+- Single-page portfolio with multiple sections:
+  - Hero
+  - Technology Stack
+  - Projects / Work
+  - Services / What I Do
+  - About Me
+  - Certificates
+  - Work Process
+  - Contact / Connect
+  - Footer
+- Russian / English language switching
+- Centralized translations through `LanguageContext`
+- Smooth scroll-based reveal animations
+- `framer-motion` animations
+- Fully responsive layout
+- CSS Modules with separate styles for components
+- Project showcase
+- Technology stack section
+- Services section
+- Certificates section
+- Contact form
+- Honeypot anti-spam protection
+- Server-side form validation
+- Telegram notifications for contact requests
+- React Router routing
+- Automatic fallback redirect to the home page
 
-**Frontend:**
-- [React 19](https://react.dev/)
-- [Vite](https://vite.dev/) — сборка и dev-сервер
-- [React Router](https://reactrouter.com/) — маршрутизация
-- [Framer Motion](https://www.framer.com/motion/) — анимации
-- [Lucide React](https://lucide.dev/) — иконки
-- CSS Modules — стилизация компонентов
-- [Oxlint](https://oxc.rs/) — линтинг
+## Tech Stack
 
-**Backend / инфраструктура:**
-- [Vercel Serverless Functions](https://vercel.com/docs/functions) — обработка формы обратной связи (`api/contact.js`)
-- Telegram Bot API — доставка заявок с формы в Telegram
-- [Vercel](https://vercel.com/) — хостинг и деплой (конфигурация в `vercel.json`, SPA-рерайты всех путей на `index.html`)
+### Frontend
 
-## Структура проекта
+- **React 19** — UI library
+- **Vite** — build tool and development server
+- **React Router** — routing
+- **Framer Motion** — animations
+- **Lucide React** — icons
+- **CSS Modules** — component-level styling
+- **Oxlint** — linting
 
-```
-Портфолио/
+### Backend / Infrastructure
+
+- **Vercel Serverless Functions** — backend endpoint for the contact form
+- **Telegram Bot API** — delivery of contact requests
+- **Vercel** — hosting and deployment
+
+## Project Structure
+
+```text
+Portfolio/
 ├── api/
-│   └── contact.js          # Serverless-функция: приём формы, отправка в Telegram
-├── public/                 # Статические файлы (изображения, логотип, превью, сертификаты)
+│   └── contact.js
+│       # Serverless function for processing the contact form
+│       # and sending messages to Telegram
+│
+├── public/
 │   └── images/
 │       └── certificates/
+│           # Certificate images and other static assets
+│
 ├── src/
-│   ├── components/         # Секции страницы (Build, Stack, Work, What, Me,
-│   │                        #   Certificates, Process, Connect, Footer, Nav)
-│   │                        #   у каждого свой *.module.css
+│   ├── components/
+│   │   ├── Build/
+│   │   ├── Stack/
+│   │   ├── Work/
+│   │   ├── What/
+│   │   ├── Me/
+│   │   ├── Certificates/
+│   │   ├── Process/
+│   │   ├── Connect/
+│   │   ├── Footer/
+│   │   └── Nav/
+│   │       # Portfolio sections and reusable UI components
+│   │
 │   ├── hooks/
-│   │   └── useReveal.js    # Хук для анимации появления элементов при скролле
+│   │   └── useReveal.js
+│   │       # Scroll reveal animation hook
+│   │
 │   ├── i18n/
-│   │   ├── LanguageContext.jsx  # Контекст переключения языка
-│   │   └── translations.js      # Словари переводов (ru / en)
-│   ├── pages/               # Страницы (Home — основная; About/Contact/Projects/
-│   │                        #   Services оставлены как заготовки на будущее)
-│   ├── App.jsx              # Роутинг
-│   ├── main.jsx             # Точка входа, провайдеры (Router, LanguageProvider)
-│   ├── motion.js            # Общие варианты анимаций framer-motion
-│   └── index.css            # Глобальные стили
+│   │   ├── LanguageContext.jsx
+│   │   └── translations.js
+│   │       # RU / EN language system
+│   │
+│   ├── pages/
+│   │   ├── Home/
+│   │   ├── About/
+│   │   ├── Contact/
+│   │   ├── Projects/
+│   │   └── Services/
+│   │       # Home is the main active page;
+│   │       # additional pages can be expanded in the future
+│   │
+│   ├── App.jsx
+│   │   # Application routing
+│   │
+│   ├── main.jsx
+│   │   # Application entry point
+│   │
+│   ├── motion.js
+│   │   # Shared Framer Motion animation variants
+│   │
+│   └── index.css
+│       # Global styles
+│
 ├── index.html
 ├── vite.config.js
-├── vercel.json               # Конфигурация деплоя на Vercel (SPA-рерайты)
+├── vercel.json
 ├── package.json
-└── .env.example              # Пример переменных окружения
+└── .env.example
 ```
 
-## Установка и запуск
+## Installation
 
-Требуется Node.js (актуальная LTS-версия) и npm.
+The project requires a current Node.js LTS version and npm.
+
+Clone the repository and install dependencies:
 
 ```bash
-# Установить зависимости
 npm install
+```
 
-# Запустить дев-сервер (по умолчанию http://localhost:5173)
+## Development
+
+Start the development server:
+
+```bash
 npm run dev
+```
 
-# Собрать production-версию (папка dist/)
+By default, Vite runs the application at:
+
+```text
+http://localhost:5173
+```
+
+## Production Build
+
+```bash
 npm run build
+```
 
-# Локально просмотреть собранную версию
+The production build is generated in:
+
+```text
+dist/
+```
+
+## Preview Production Build
+
+```bash
 npm run preview
+```
 
-# Проверить код линтером
+## Lint
+
+```bash
 npm run lint
 ```
 
-Для локальной работы формы обратной связи через `vercel dev` нужно, чтобы серверная функция `api/contact.js` видела переменные окружения (см. ниже).
+## Environment Variables
 
-## Переменные окружения
+Create a local `.env` file from `.env.example`:
 
-Скопируйте `.env.example` в `.env` и заполните реальными значениями (файл `.env` не должен попадать в репозиторий — он уже добавлен в `.gitignore`). В продакшене те же переменные задаются в панели Vercel: Project → Settings → Environment Variables.
+```bash
+cp .env.example .env
+```
 
-| Переменная            | Назначение                                                                 |
-|------------------------|-----------------------------------------------------------------------------|
-| `TELEGRAM_BOT_TOKEN`   | Токен Telegram-бота (выдаётся `@BotFather`), от имени которого отправляются заявки с формы. |
-| `TELEGRAM_CHAT_ID`     | ID чата/пользователя в Telegram, куда бот пересылает заявки с формы связи.  |
+Then configure the required values.
 
-Обе переменные используются только на сервере (в `api/contact.js`) и никогда не попадают в клиентский код.
+| Variable | Description |
+|---|---|
+| `TELEGRAM_BOT_TOKEN` | Telegram bot token issued by `@BotFather` |
+| `TELEGRAM_CHAT_ID` | Telegram chat/user ID where contact requests are delivered |
 
-## Деплой
+These variables are used only by:
 
-Проект настроен под деплой на [Vercel](https://vercel.com/):
-- `vercel.json` перенаправляет все маршруты на `index.html`, что необходимо для корректной работы SPA-роутинга.
-- `api/contact.js` автоматически разворачивается как serverless-функция.
-- Перед деплоем нужно задать переменные окружения `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID` в настройках проекта на Vercel.
+```text
+api/contact.js
+```
+
+They are **server-side secrets** and must never be exposed through frontend variables such as:
+
+```text
+VITE_TELEGRAM_BOT_TOKEN
+VITE_TELEGRAM_CHAT_ID
+```
+
+Do not commit `.env` to Git.
+
+## Contact Form
+
+The contact form sends requests through:
+
+```text
+api/contact.js
+```
+
+The request flow is:
+
+```text
+Portfolio
+    ↓
+Contact Form
+    ↓
+Client request
+    ↓
+api/contact.js
+    ↓
+Validation
+    ↓
+Honeypot check
+    ↓
+Telegram Bot API
+    ↓
+Telegram Chat
+```
+
+The Telegram bot token remains on the server and is not included in the browser bundle.
+
+## Animations
+
+Animations are implemented with:
+
+```text
+framer-motion
+```
+
+Shared animation variants are stored in:
+
+```text
+src/motion.js
+```
+
+Scroll-based reveal behavior is handled by:
+
+```text
+src/hooks/useReveal.js
+```
+
+This keeps animation logic reusable across portfolio sections.
+
+## Internationalization
+
+The portfolio supports:
+
+```text
+Russian
+English
+```
+
+The language system is implemented through:
+
+```text
+src/i18n/LanguageContext.jsx
+src/i18n/translations.js
+```
+
+All main interface content can be switched without reloading the page.
+
+## Routing
+
+Routing is handled with:
+
+```text
+react-router-dom
+```
+
+The main page is:
+
+```text
+/
+```
+
+The application also contains routes prepared for future expansion:
+
+```text
+/about
+/contact
+/projects
+/services
+```
+
+Unknown or unsupported routes are redirected back to the main page.
+
+## Responsive Design
+
+The interface is built with responsive layouts for:
+
+- Desktop
+- Laptop
+- Tablet
+- Mobile
+
+Each major component has its own CSS Module, keeping styles isolated and reducing conflicts between sections.
+
+## Deployment
+
+The project is configured for **Vercel**.
+
+Deployment flow:
+
+```text
+GitHub
+   ↓
+Vercel
+   ↓
+Vite Build
+   ↓
+React SPA
+   ↓
+Vercel Serverless Functions
+```
+
+Before deployment, add the following environment variables in:
+
+```text
+Vercel
+→ Project
+→ Settings
+→ Environment Variables
+```
+
+```text
+TELEGRAM_BOT_TOKEN
+TELEGRAM_CHAT_ID
+```
+
+The file:
+
+```text
+vercel.json
+```
+
+contains the configuration required for SPA routing.
+
+The serverless function:
+
+```text
+api/contact.js
+```
+
+is automatically deployed by Vercel.
+
+## Security
+
+The project keeps Telegram credentials on the server side.
+
+Security measures include:
+
+- Server-side form validation
+- Honeypot anti-spam field
+- No Telegram secrets in the frontend bundle
+- Environment variables for sensitive credentials
+- `.env` excluded from Git
+
+Never commit real Telegram credentials to the repository.
+
+## Design Goals
+
+The portfolio focuses on:
+
+- Modern visual design
+- Clear UX
+- Strong project presentation
+- Smooth animations
+- Responsive layout
+- Minimal and readable interface
+- Fast navigation
+- Practical frontend architecture
+
+The goal is to present both the visual and technical side of frontend development.
+
+## Author
+
+**Daniil Yemshanov**
+
+Frontend Developer
+
+Focus:
+
+```text
+React
+JavaScript
+UI / UX
+Frontend Development
+Animations
+Web Architecture
+```
+
+## License
+
+This project is a personal portfolio and is primarily intended for demonstration and personal use.
