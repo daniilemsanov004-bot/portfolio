@@ -1,16 +1,103 @@
-# React + Vite
+# Портфолио
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Личный сайт-портфолио на React — одностраничное приложение (SPA) с анимациями, переключением языка (RU/EN) и формой обратной связи, которая пересылает заявки в Telegram.
 
-Currently, two official plugins are available:
+Сайт демонстрирует проекты, стек технологий, услуги, информацию об авторе, сертификаты и контакты. Всё содержимое расположено на одной странице `Home`, разбитой на секции-компоненты; переходы по «старым»/произвольным путям автоматически редиректят на главную.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Возможности
 
-## React Compiler
+- Одностраничная структура с секциями: Hero, стек технологий, проекты (Work), услуги (What), обо мне (Me), сертификаты, процесс работы (Process), форма связи (Connect), футер.
+- Переключение языка интерфейса (русский / английский) через контекст `LanguageContext` и словарь переводов.
+- Плавные анимации появления элементов при скролле на `framer-motion`.
+- Адаптивная вёрстка на CSS Modules (отдельный `.module.css` под каждый компонент).
+- Форма обратной связи с honeypot-полем от спам-ботов и серверной валидацией.
+- Серверная функция `api/contact.js`, которая пересылает заявки из формы в Telegram-чат через Bot API.
+- Роутинг через `react-router-dom` с fallback-редиректом на главную страницу.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Стек технологий
 
-## Expanding the Oxlint configuration
+**Frontend:**
+- [React 19](https://react.dev/)
+- [Vite](https://vite.dev/) — сборка и dev-сервер
+- [React Router](https://reactrouter.com/) — маршрутизация
+- [Framer Motion](https://www.framer.com/motion/) — анимации
+- [Lucide React](https://lucide.dev/) — иконки
+- CSS Modules — стилизация компонентов
+- [Oxlint](https://oxc.rs/) — линтинг
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+**Backend / инфраструктура:**
+- [Vercel Serverless Functions](https://vercel.com/docs/functions) — обработка формы обратной связи (`api/contact.js`)
+- Telegram Bot API — доставка заявок с формы в Telegram
+- [Vercel](https://vercel.com/) — хостинг и деплой (конфигурация в `vercel.json`, SPA-рерайты всех путей на `index.html`)
+
+## Структура проекта
+
+```
+Портфолио/
+├── api/
+│   └── contact.js          # Serverless-функция: приём формы, отправка в Telegram
+├── public/                 # Статические файлы (изображения, логотип, превью, сертификаты)
+│   └── images/
+│       └── certificates/
+├── src/
+│   ├── components/         # Секции страницы (Build, Stack, Work, What, Me,
+│   │                        #   Certificates, Process, Connect, Footer, Nav)
+│   │                        #   у каждого свой *.module.css
+│   ├── hooks/
+│   │   └── useReveal.js    # Хук для анимации появления элементов при скролле
+│   ├── i18n/
+│   │   ├── LanguageContext.jsx  # Контекст переключения языка
+│   │   └── translations.js      # Словари переводов (ru / en)
+│   ├── pages/               # Страницы (Home — основная; About/Contact/Projects/
+│   │                        #   Services оставлены как заготовки на будущее)
+│   ├── App.jsx              # Роутинг
+│   ├── main.jsx             # Точка входа, провайдеры (Router, LanguageProvider)
+│   ├── motion.js            # Общие варианты анимаций framer-motion
+│   └── index.css            # Глобальные стили
+├── index.html
+├── vite.config.js
+├── vercel.json               # Конфигурация деплоя на Vercel (SPA-рерайты)
+├── package.json
+└── .env.example              # Пример переменных окружения
+```
+
+## Установка и запуск
+
+Требуется Node.js (актуальная LTS-версия) и npm.
+
+```bash
+# Установить зависимости
+npm install
+
+# Запустить дев-сервер (по умолчанию http://localhost:5173)
+npm run dev
+
+# Собрать production-версию (папка dist/)
+npm run build
+
+# Локально просмотреть собранную версию
+npm run preview
+
+# Проверить код линтером
+npm run lint
+```
+
+Для локальной работы формы обратной связи через `vercel dev` нужно, чтобы серверная функция `api/contact.js` видела переменные окружения (см. ниже).
+
+## Переменные окружения
+
+Скопируйте `.env.example` в `.env` и заполните реальными значениями (файл `.env` не должен попадать в репозиторий — он уже добавлен в `.gitignore`). В продакшене те же переменные задаются в панели Vercel: Project → Settings → Environment Variables.
+
+| Переменная            | Назначение                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| `TELEGRAM_BOT_TOKEN`   | Токен Telegram-бота (выдаётся `@BotFather`), от имени которого отправляются заявки с формы. |
+| `TELEGRAM_CHAT_ID`     | ID чата/пользователя в Telegram, куда бот пересылает заявки с формы связи.  |
+
+Обе переменные используются только на сервере (в `api/contact.js`) и никогда не попадают в клиентский код.
+
+## Деплой
+
+Проект настроен под деплой на [Vercel](https://vercel.com/):
+- `vercel.json` перенаправляет все маршруты на `index.html`, что необходимо для корректной работы SPA-роутинга.
+- `api/contact.js` автоматически разворачивается как serverless-функция.
+- Перед деплоем нужно задать переменные окружения `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID` в настройках проекта на Vercel.
