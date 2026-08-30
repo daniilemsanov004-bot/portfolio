@@ -12,13 +12,12 @@ const channelMeta = [
     },
     {
         key: 'Email',
-        href: 'mailto:daniilemsanov@gmail.com',
+        href: 'mailto:daniiemsanov004@gmail.com',
         className: '',
     },
     {
-        // TODO: replace with the real GitHub profile URL once available
         key: 'GitHub',
-        href: '#',
+        href: 'https://github.com/daniilyemshanov',
         className: '',
     },
 ]
@@ -95,13 +94,6 @@ const Connect = () => {
                                     : 'noreferrer'
                             }
                             className={`${s.channel} ${channel.className}`}
-                            aria-disabled={channel.key === 'GitHub' ? 'true' : undefined}
-                            title={channel.key === 'GitHub' ? t.connect.githubSoon : undefined}
-                            onClick={
-                                channel.key === 'GitHub'
-                                    ? (e) => e.preventDefault()
-                                    : undefined
-                            }
                             variants={staggerItem}
                         >
                             <span>{t.connect.channels[channel.key]}</span>
