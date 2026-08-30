@@ -248,6 +248,14 @@
 
     .burger {
         display: block;
+
+        /* Pin to the viewport instead of relying on the sticky header —
+           guarantees it never scrolls away, while page scroll stays
+           completely free (no overflow locking). */
+        position: fixed;
+        top: 14px;
+        right: 20px;
+        z-index: 150;
     }
 
     .links {
@@ -409,6 +417,10 @@
         padding: 0 16px;
     }
 
+    .burger {
+        right: 16px;
+    }
+
     .links {
         width: 88vw;
         padding-left: 30px;
@@ -544,4 +556,4 @@
     * {
         transition: none !important;
     }
-}
+    }
