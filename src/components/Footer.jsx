@@ -35,10 +35,10 @@ const Footer = () => {
                     </p>
 
                     <a
-                        href="mailto:daniilemsanov@gmail.com"
+                        href="mailto:daniiemsanov004@gmail.com"
                         className={s.email}
                     >
-                        daniilemsanov@gmail.com
+                        daniiemsanov004@gmail.com
                     </a>
                 </div>
 
@@ -66,16 +66,14 @@ const Footer = () => {
                             {t.footer.socials.Telegram}
                         </a>
 
-                        <a href="mailto:daniilemsanov@gmail.com">
+                        <a href="mailto:daniiemsanov004@gmail.com">
                             {t.footer.socials.Email}
                         </a>
 
-                        {/* TODO: replace with the real GitHub profile URL once available */}
                         <a
-                            href="#"
-                            aria-disabled="true"
-                            title={t.footer.githubSoon}
-                            onClick={(e) => e.preventDefault()}
+                            href="https://github.com/daniilyemshanov"
+                            target="_blank"
+                            rel="noreferrer"
                         >
                             {t.footer.socials.GitHub}
                         </a>
