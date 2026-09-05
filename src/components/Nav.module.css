@@ -8,13 +8,12 @@
             #06070c 65%,
             #0c0a18 100%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.035);
-    transform: translateY(0);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform;
+    transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: top;
 }
 
 .hidden {
-    transform: translateY(-100%);
+    top: -78px;
 }
 
 .nav {
@@ -235,6 +234,9 @@
 }
 
 @media (max-width: 760px) {
+    .hidden {
+        top: -72px;
+    }
     .nav {
         position: relative;
         height: 72px;
@@ -264,6 +266,7 @@
 
         top: 0;
         right: 0;
+        bottom: 0;
 
         display: flex;
         flex-direction: column;
@@ -273,7 +276,7 @@
         gap: 28px;
 
         width: min(82vw, 360px);
-        height: 100vh;
+        height: 100dvh;
 
         padding: 100px 40px 40px;
 
@@ -366,6 +369,8 @@
         z-index: 100;
 
         inset: 0;
+        width: 100vw;
+        height: 100dvh;
 
         background: rgba(0, 0, 0, 0.45);
         backdrop-filter: blur(4px);
