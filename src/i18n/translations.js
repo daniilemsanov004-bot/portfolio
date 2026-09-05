@@ -47,9 +47,9 @@ export const translations = {
                     description:
                         'A modern real-estate platform with property listings, search, administration and Telegram integration.',
                 },
-                Estatein: {
+                Realstatein: {
                     type: 'REAL ESTATE WEB APP',
-                    title: 'Estatein',
+                    title: 'Realstatein',
                     description:
                         'A modern real-estate platform with property listings, contact forms and informative pages.',
                 },
@@ -253,9 +253,9 @@ export const translations = {
                     description:
                         'Современная платформа недвижимости с каталогом объектов, поиском, админ-панелью и интеграцией с Telegram.',
                 },
-                Estatein: {
+                Realtatein: {
                     type: 'ВЕБ-ПРИЛОЖЕНИЕ НЕДВИЖИМОСТИ',
-                    title: 'Estatein',
+                    title: 'Realstatein',
                     description:
                         'Современная платформа недвижимости с каталогом объектов, формами обратной связи и информационными страницами.',
                 },
