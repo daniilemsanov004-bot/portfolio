@@ -11,9 +11,9 @@ const projectMeta = [
         link: 'https://urbankeyy.vercel.app/',
     },
     {
-        key: 'Estatein',
+        key: 'Realestatein',
         tags: ['React', 'JavaScript', 'Supabase', 'CSS Modules'],
-        image: 'images/estatein.png',
+        image: '/06edc737-9ba2-4ef9-a219-2dbbe967151e.png',
         link: 'https://realestatein.vercel.app/',
     },
 ]
